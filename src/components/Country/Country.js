@@ -1,76 +1,73 @@
-import axios from 'axios'
+import './Country.css'
 import {useState, useEffect, useContext} from 'react'
+import {Link} from 'react-router-dom'
 import { RegionContext } from '../../context/RegionContext'
 import { CountryContext } from '../../context/CountryContext'
+import { ThemeContext } from '../../context/ThemeContext'
+import api from '../../config/api'
+
 const CountryComponent = () => {
-    const api = axios.create({
-      baseURL: 'https://restcountries.com/v3.1/name/usa'
-    })
+   
 
     const {region, setRegion} = useContext(RegionContext);
     const {country, setCountry} = useContext(CountryContext);
-    const [name, setNome] = useState('');
-    const [population, setPopulation] = useState('');
-    /* const [region, setRegion] = useState(''); */
-    const [capital, setCapital] = useState('');
-    const [flag, setFlag] = useState('');
+    const {theme} = useContext(ThemeContext);
     const [data, setData] = useState([]);
     useEffect(() =>{
-      axios.get('https://restcountries.com/v3.1/currency/dollar').then(response =>{
-        /* console.log(response.data) */
-        setData([...response.data])
+      api.get('/currency/dollar').then(response =>{
+        console.log(response.data)
+         setData([...response.data])
+    }).catch((e) => {
+      console.log(e.message)
     })
     }, [])
 
     useEffect(() =>{
-      axios.get(`https://restcountries.com/v3.1/region/${region}`).then(response =>{
+      api.get(`region/${region}`).then(response =>{
         /* console.log(response.data) */
         setData([...response.data])
+    }).catch((e) =>{
+      console.log(e.message)
     })
     }, [region])
 
     useEffect(() =>{
-      axios.get(`https://restcountries.com/v3.1/name/${country}`).then(response =>{
+      api.get(`name/${country}`).then(response =>{
         /* console.log(response.data) */
         setData([...response.data])
-        console.log(country);
+    }).catch((e) =>{
+      console.log(e.message)
     })
     }, [country])
 
     useEffect(() =>{
-      axios.get(`https://restcountries.com/v3.1/name/`).then(response =>{
+      api.get(`name/`).then(response =>{
         /* console.log(response.data) */
         setData([...response.data]);
+    }).catch(e => {
+      console.log(e.message)
     })
     }, )
-  /*   axios.get('https://restcountries.com/v3.1/name/usa').then(response =>{
-        setNome(response.data[0].name.official); 
-        setPopulation(response.data[0].population);
-        setRegion(response.data[0].region);
-        setCapital(response.data[0].capital[0]);
-        setFlag(response.data[0].flags.png);
-    }); */
 
-
+    
 
   
   return (
-    <div>
+    <div className={`country-container ${theme}`}>
        {data && data.map(country => (
-        <div>
-         <img src={`${country.flags.png}`} alt="" />
-        <p>Name: {country.name.official}</p>
+        <>
+         <div className='img-container'>
+          <img src={`${country.flags.svg}`} alt="" />
+          </div>
+        <div key={country.ccn3} className={`country-card ${theme}`}>
+        <h2>{country.name.official}</h2>
         <p>Population: {country.population}</p>
         <p>Region: {country.region}</p>
-       {<p>Capital: {country.capital && country.capital[0] ? country.capital[0] : " " || ""}</p> }
+        <p>Capital: {country.capital && country.capital[0] ? country.capital[0] : " " || ""}</p> 
+        <Link className={`btn ${theme}`} to={`/country/${country.name.official}`}>Show More</Link>
         </div>
+        </>
       ))} 
-        {/* <h1>Country</h1>
-        <img src={`${flag}`} alt="" />
-        <p>Name: {name}</p>
-        <p>Population: {population}</p>
-        <p>Region: {region}</p>
-        <p>Capital: {capital}</p> */}
     </div>
   )
 }

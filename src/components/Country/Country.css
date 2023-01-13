@@ -1,0 +1,49 @@
+.country-card{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    text-align: center;
+    width: 64%;
+    margin-bottom: 15px;
+}
+
+.img-container{
+    width: 80%;
+    display: inline-block;
+}
+
+.img-container img{
+    width: 100%;
+}
+
+
+.country-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    width: 80%;
+    max-width: 80%;
+    box-sizing: border-box;
+}
+
+
+
+.dark{
+    background-color: hsl(209, 23%, 22%);
+    color: hsl(0, 0%, 100%);
+}
+
+.light{
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(200, 15%, 8%);
+}
+
+.btn{
+    text-decoration: none;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 10px;
+}

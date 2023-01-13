@@ -5,3 +5,27 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.dark{
+    background-color: hsl(209, 23%, 22%);
+    color: hsl(0, 0%, 100%);
+}
+
+.light{
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(200, 15%, 8%);
+}
+
+.dark-mode-container{
+    cursor: pointer;
+}
+
+@media screen and (max-width:500px){
+    .header h1, span{
+        font-size: 14px;
+    }
+
+    .header{
+        padding: 1.5em;
+    }
+}
+

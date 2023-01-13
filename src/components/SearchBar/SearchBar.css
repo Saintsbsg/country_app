@@ -24,8 +24,16 @@
 .select{
     border-color: transparent;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    background-color: white;
     box-sizing: border-box;
     
 }
 
+.dark{
+    background-color: hsl(209, 23%, 22%);
+    color: hsl(0, 0%, 100%);
+}
+
+.light{
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(200, 15%, 8%);
+}

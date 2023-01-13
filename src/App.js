@@ -1,17 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-import CountryComponent from './components/Country/Country';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Header from './components/Header/Header';
 import SearchBar from './components/SearchBar/SearchBar';
+import Home from './pages/Home/Home';
+import Country from './pages/Country/Country';
+import { useContext } from 'react';
+import { ThemeContext } from './context/ThemeContext';
+import './App.css'
 
 function App() {
+
+  const {theme} = useContext(ThemeContext);
   return (
-    <div className="App">
+    <div className={theme}>
+      <BrowserRouter>
       <Header/>
       <SearchBar/>
-      <CountryComponent/>
-     <i class="fa-brands fa-js"></i>
-     <i class="fa-regular fa-moon"></i>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/country/:country' element={<Country/>} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
