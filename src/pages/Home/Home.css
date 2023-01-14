@@ -1,11 +1,11 @@
-.home-container{
+/* .home-container{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    /* background-color: hsl(0, 0%, 98%); */
-}
+     background-color: hsl(0, 0%, 98%); 
+} */
 
 .dark{
     background-color: hsl(209, 23%, 22%);

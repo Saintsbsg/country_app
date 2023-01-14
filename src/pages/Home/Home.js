@@ -1,5 +1,5 @@
 import './Home.css'
-import CountryComponent from '../../components/Country/Country'
+import CountryComponent from '../../components/Country/CountryComponent'
 import { useContext } from 'react'
 import { ThemeContext } from '../../context/ThemeContext'
 const Home = () => {

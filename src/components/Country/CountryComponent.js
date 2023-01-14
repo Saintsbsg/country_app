@@ -1,4 +1,4 @@
-import './Country.css'
+import './CountryComponent.css'
 import {useState, useEffect, useContext} from 'react'
 import {Link} from 'react-router-dom'
 import { RegionContext } from '../../context/RegionContext'
@@ -55,18 +55,16 @@ const CountryComponent = () => {
   return (
     <div className={`country-container ${theme}`}>
        {data && data.map(country => (
-        <>
-         <div className='img-container'>
-          <img src={`${country.flags.svg}`} alt="" />
-          </div>
+        <div className='card-content'>
+          <img src={`${country.flags.svg}`} alt={`${country.name} flag`} />
         <div key={country.ccn3} className={`country-card ${theme}`}>
         <h2>{country.name.official}</h2>
         <p>Population: {country.population}</p>
         <p>Region: {country.region}</p>
         <p>Capital: {country.capital && country.capital[0] ? country.capital[0] : " " || ""}</p> 
-        <Link className={`btn ${theme}`} to={`/country/${country.name.official}`}>Show More</Link>
+        <Link className={`btn ${theme}`} to={`/country/${country.name.official}`}>Show More</Link> 
         </div>
-        </>
+        </div>
       ))} 
     </div>
   )

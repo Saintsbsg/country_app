@@ -2,7 +2,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Header from './components/Header/Header';
 import SearchBar from './components/SearchBar/SearchBar';
 import Home from './pages/Home/Home';
-import Country from './pages/Country/Country';
+import CountryPage from './pages/Country/CountryPage';
 import { useContext } from 'react';
 import { ThemeContext } from './context/ThemeContext';
 import './App.css'
@@ -17,7 +17,7 @@ function App() {
       <SearchBar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/country/:country' element={<Country/>} />
+        <Route path='/country/:country' element={<CountryPage/>} />
       </Routes>
       </BrowserRouter>
     </div>
