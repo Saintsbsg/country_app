@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
 import api from "../../config/api";
 import './CountryPage.css'
+import BackButton from "../../components/BackButton/BackButton";
 const CountryPage = () => {
   const {theme} = useContext(ThemeContext);
   const {country} = useParams();
-  const [data, setData] = useState([]);
   const [flag, setFlag] = useState('');
   const [currencies, setCurrencies] = useState([]);
   const [name, setName] = useState('');
@@ -32,7 +32,7 @@ const CountryPage = () => {
       setSubRegion(response.data[0].subregion);
       setTld(response.data[0].tld);
       setBorders(response.data[0].borders);
-      setCurrencies(Object.values(Object.values(response.data[0].currencies)[0]).filter(el => el !== '$'));
+      setCurrencies(Object.values(Object.values(response.data[0].currencies)[0]).filter(el => el !== '$' && el !== '€' && el !=='¥'));
       setLanguages(Object.values(Object.values(response.data[0].languages)));
       
 
@@ -40,35 +40,39 @@ const CountryPage = () => {
     });
   }, [])
   return (
-    <div className={`single-country-container ${theme}`}>
+    <>
+      <BackButton/>
+      <div className={`single-country-container ${theme}`}>
       <div className={`single-country-card ${theme}`}>
-      <div>
+      <div className="flag-grid">
         <img src={flag} alt={`${name}, flag`} />
       </div>
-      <h2>{name}</h2> 
-      <p>Native Name: {nativeName.toString()}</p> 
-      <p>Population: {population}</p>
-      <p>Region: {region}</p>
-      <p>Sub Region: {subRegion}</p>
-      <p>Capital: {capital}</p>
-      <p>Top Level Domain{tld}</p>
-      <p>Currencies: {currencies.toString()}</p>
-      <p>Languages: {languages.toString()}</p> 
-      {/* <p>{borders.toString()}</p> */}
-      {/* {currencies && currencies.map(currencie =>(
-        <p><span>{currencie}</span></p>
-      ))} */}
+      <div className="info-column-1 info-title">
+        <h2>{name}</h2> 
+        <p>Native Name: <span>{nativeName.toString()}</span></p> 
+        <p>Population: <span>{population}</span></p>
+        <p>Region: <span>{region}</span></p>
+        <p>Sub Region: <span>{subRegion}</span></p>
+        <p>Capital: <span>{capital}</span></p>
+      </div>
+      
+      <div className="info-column-2 info-title">
+        <p>Top Level Domain: <span>{tld}</span> </p>
+        <p>Currencies: <span>{currencies.toString()}</span></p>
+        <p>Languages: <span>{languages.toString()}</span></p> 
+      </div>
 
-     {/* { {languages && languages.map(language =>(
-              <p><span>{language}</span></p>
-            ))} */}
-      <p>Border Countries: </p>
-      {borders && borders.map(border =>(
-              <span>{border}</span>
-            ))} 
+      <div className={`border-info info-title ${theme}`}>
+        <p>Border Countries: </p>
+          {borders && borders.map(border =>(
+                  <span>{border}</span>
+                ))} 
+      </div>
       </div>
       
     </div>
+    </>
+    
   )
 }
 

@@ -3,9 +3,9 @@
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         text-align: center;
         width: 100%;
-        margin: auto;
-        margin-bottom: 15px;
+        margin:  auto;
         height: 250px;
+        margin-bottom: 30px;
     }
     
 .img-container{
@@ -14,8 +14,10 @@
     
 img{
     width: 100%;
-    aspect-ratio: 1.5/1;
-    /* object-fit: cover; */
+    aspect-ratio: 1.8/.9;
+    display: inline-block;
+    margin-bottom: -20px;
+    object-fit: cover; 
     }
 
     
@@ -42,6 +44,10 @@ img{
     }
 
 
+.link-card{
+    text-decoration: none;
+}
+
 
 
 .dark{
@@ -64,15 +70,22 @@ img{
     margin-bottom: 10px;
 }
 
+@media screen and (min-width: 779px) {
+    img{
+        width: 100%;
+        aspect-ratio: 1.5/1;
+        object-fit: cover; 
+        margin-bottom: 0px
+        }
+}
 
 
 
 @media screen and (min-width: 800px) {
     .country-container{
-        display: grid !important;
+        display: grid;
         grid-template-columns: repeat(4, 3fr);
-       /*  grid-auto-rows: 95%; */
-        width: 100%;
+        width: 80%;
         column-gap: 10px;
     }
 

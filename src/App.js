@@ -14,7 +14,7 @@ function App() {
     <div className={theme}>
       <BrowserRouter>
       <Header/>
-      <SearchBar/>
+      {/* <SearchBar/> */}
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/country/:country' element={<CountryPage/>} />

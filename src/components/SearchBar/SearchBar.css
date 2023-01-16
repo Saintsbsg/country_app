@@ -37,3 +37,12 @@
     background-color: hsl(0, 0%, 100%);
     color: hsl(200, 15%, 8%);
 }
+
+@media screen and (min-width: 780px) {
+    .search-form{
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin: 50px auto;
+    }
+}

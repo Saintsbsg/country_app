@@ -6,7 +6,7 @@ import { CountryContext } from '../../context/CountryContext';
 import { ThemeContext } from '../../context/ThemeContext';
 const SearchBar = () => {
     const {region, setRegion} = useContext(RegionContext)
-    const {country, setCountry} = useContext(CountryContext);
+    const {setCountry} = useContext(CountryContext);
     const {theme} = useContext(ThemeContext);
     const [value, setValue] = useState('Filter');
     const handleChange = (e) =>{
@@ -20,11 +20,11 @@ const SearchBar = () => {
   return (
     <form className={`search-form ${theme} `}>
         <div className={`input-icons ${theme}`}>
-        <i className="fa-solid fa-magnifying-glass icon"></i>
-        <input className={`search-input ${theme}`} type="text" placeholder='Search for a country...' onChange={handleCountry} />
+            <i className="fa-solid fa-magnifying-glass icon"></i>
+            <input className={`search-input ${theme}`} type="text" placeholder='Search for a country...' onChange={handleCountry} />
         </div>
         <select className={`select ${theme}`} value={region}  name="country filter"  onChange={handleChange}>
-        <option defaultValue="selected" value="Default">Filter by Region</option>
+        <option defaultValue="selected" value="default">Filter by Region</option>
             <option value="americas">Americas</option>
             <option value="africa">Africa</option>
             <option value="asia">Asia</option>
