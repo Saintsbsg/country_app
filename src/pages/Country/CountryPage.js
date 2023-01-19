@@ -40,7 +40,7 @@ const CountryPage = () => {
     });
   }, [])
   return (
-    <>
+    <div className={`main-country-container ${theme}`}>
       <BackButton/>
       <div className={`single-country-container ${theme}`}>
       <div className={`single-country-card ${theme}`}>
@@ -64,14 +64,14 @@ const CountryPage = () => {
 
       <div className={`border-info info-title ${theme}`}>
         <p>Border Countries: </p>
-          {borders && borders.map(border =>(
+           {borders && borders.map(border =>(
                   <span>{border}</span>
-                ))} 
+                ))}  
       </div>
       </div>
       
     </div>
-    </>
+    </div>
     
   )
 }

@@ -11,7 +11,7 @@ function App() {
 
   const {theme} = useContext(ThemeContext);
   return (
-    <div className={theme}>
+    <div className={`main-container ${theme}`}>
       <BrowserRouter>
       <Header/>
       {/* <SearchBar/> */}

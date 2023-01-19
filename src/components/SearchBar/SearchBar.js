@@ -16,6 +16,10 @@ const SearchBar = () => {
 
     const handleCountry = (e) =>{
         setCountry(e.target.value);
+        console.log(e.target.value.length)
+        if(e.target.value.length === 0){
+            setRegion('default')
+        }
     }
   return (
     <form className={`search-form ${theme} `}>
